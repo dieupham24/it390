@@ -1,0 +1,51 @@
+<!DOCTYPE html">
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory Management System</title>
+	<link href="insert.css" rel="stylesheet" type="text/css" />
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<div id="content"> 
+		<h1> Add a New Product </h1>
+		<form id="myForm" action="insert.html" method="post">			
+				
+					<label>ProductID: </label>
+					<input class="input_type" type="text" id="productID" /><br />
+						
+								
+					<label for="productType">Product type:</label>
+					<select class="input_type" name="productType" id="productType">
+					  <option value="none" selected disabled hidden>
+						  Select a product type
+					  </option>
+					  <option value="Ring">Ring</option>
+					  <option value="Bracelet">Bracelet</option>
+					  <option value="Necklet">Necklet</option>
+					  <option value="Earing">Earing</option>
+					  <option value="Diamond">Diamond</option>
+					  <option value="Other">Other</option>
+					</select>
+					
+						
+					<label>Product name: </label>
+					<input class="input_type" type="text" id="productName" /><br />
+						
+					<label>Product Price: </label>
+					<input class="input_type" type="text" id="productPrice" /><br />
+						
+					<label>Product description: </label>
+					<input class="input_type" type="text" id="productDescription" /><br />
+						
+					<button class="submit_btn" type="button" onclick="checking()"> Insert </button>
+					<button class="submit_btn" type="reset"> Reset </button>
+			
+		</form>
+	</div>
+	
+	<p id="outPut"></p>
+</body>
+</html>

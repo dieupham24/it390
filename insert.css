@@ -1,0 +1,55 @@
+#content {
+max-width: 100% !important;
+    border-radius: 5px;
+    background-color: #bbc3c3;
+    padding: 20px;
+}
+
+.input_type, select {
+  border-radius: 4px;	
+  width: 100%;
+  padding: 10px 18px;
+  margin: 6px 0;
+  border: 0.8px solid #ccc;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:large;
+  font-style: italic;
+  color: black;
+}
+
+.submit_btn{
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 18px;
+  margin: 6px 0;
+}
+
+.submit_btn:hover {
+  background-color: green;
+}
+
+#wrap_form, #grade_result{
+  border-radius: 5px;
+  background-color: #bbc3c3;
+  padding: 20px;
+}	
+#grade_result span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:large;
+	font-style: italic;
+	background-color: cornsilk;
+}	
+#outPut {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:30px;
+	font-style: italic;
+	background-color: cornsilk;
+	color:red;
+}	
+#comment_record {
+  border-radius: 4px;	
+  width: 50%;
+  padding: 10px 18px;
+  margin: 6px 0;
+  border: 0.8px solid #2a2a2d;
+}	

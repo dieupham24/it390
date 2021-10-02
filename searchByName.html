@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8" />
+		<title>Inventory System</title>
+		<style>
+			body {	
+				background: #E3EDC2; 
+				color: #333;	
+				font: small "Lucida Grande", Arial, sans-serif;
+				margin: 2em 10em;
+				
+			}
+			h1 {
+				background-color: #2196F3;
+				text-align: center;
+				color: white;
+				width: 100%;
+				height: 70px;
+				padding-top: 18px;
+				font-size: 45px;
+			}
+			h2 {
+				background-color: lightgray;
+				text-align: center;
+				color: gray;
+				width: 100%;
+				height: 50px;
+				padding-top: 12px;
+				font-size: 35px;
+			}
+			
+			p{
+				text-align: right;
+				margin-right: 10px;
+				background-color: lightblue;
+				font-family: Arial, Helvetica, sans-serif;
+				font-style: italic;
+				height: 2em;
+				padding-top: 1em;
+			}
+			.grid-container {
+				display: grid;
+				grid-template-columns: auto auto auto auto auto auto auto;
+				grid-gap: 0px;
+				background-color: #2196F3;
+				padding: 1px;			  
+				margin-top: 2em;
+				margin-top: 2em;
+				padding: 1em 1em;
+			}
+
+			.grid-container > div {
+				background-color: rgba(255, 255, 255, 0.8);
+				border: 1px solid black;
+				text-align: center;
+				font-size: 1.7em;
+				font-family: ui-serif, -webkit-pictograph;
+				padding: 0.2em;
+			}
+			.bttn {
+				margin-left: 84em;
+				margin-top: 1em;
+			}
+			footer {
+				background-color:#2196F3;	
+				height: 50px;
+				padding-top: 2px;
+			}
+			p #footer_content {
+				margin: 0em 15em;
+				font-size: 12px;
+				font-style: italic;
+				font-family: ui-serif, -webkit-pictograph;
+				padding-top: 1em;
+			}
+			/* Button used to open the contact form - fixed at the bottom of the page */
+			.open-button {
+			  background-color: #555;
+			  color: white;
+			  padding: 16px 20px;
+			  border: none;
+			  cursor: pointer;
+			  opacity: 0.8;
+			  position: fixed;
+			  bottom: 23px;
+			  right: 28px;
+			  width: 280px;
+			}
+
+			/* The popup form - hidden by default */
+			.form-popup {
+				display: none;
+				position: fixed;
+				bottom: 0;
+				right: 15px;
+				border: 3px solid #f1f1f1;
+				z-index: 9;
+				left: 25em;
+				width: 800px;
+				height: 500px;
+				top: 2.4em;
+			}
+
+			/* Add styles to the form container */
+			.form-container {
+			  max-width: 800px;
+			  padding: 10px;
+			  background-color: white;
+			}
+
+			/* Full-width input fields */
+			.form-container input[type=text], .form-container input[type=password] {
+			  width: 96%;
+			  padding: 15px;
+			  margin: 5px 0 22px 0;
+			  border: none;
+			  background: #f1f1f1;
+			}
+
+			/* When the inputs get focus, do something */
+			.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+			  background-color: #ddd;
+			  outline: none;
+			}
+
+			/* Set a style for the submit/login button */
+			.form-container .btn {
+				background-color: #2196F3;
+				color: white;
+				padding: 16px 20px;
+				border: none;
+				cursor: pointer;
+				width: 20%;
+				margin-bottom: 10px;
+				opacity: 0.8;
+				margin-right: 10px;
+			}
+
+			/* Add a red background color to the cancel button */
+			.form-container .cancel {
+			  background-color: red;
+			}
+
+			/* Add some hover effects to buttons */
+			.form-container .btn:hover, .open-button:hover {
+			  opacity: 1;
+			}
+		</style>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	</head>
+	<body>
+
+	<div id = "wrap">
+		<div class = "header">
+			<h1>Inventory Management System</h1>
+			<p> <span id="datetime"></span> | Dieu Pham | <a href="mailto:dpham24@gmu.edu">dpham24@gmu.edu</a></p>
+			<script>
+				var d = new Date();
+				document.getElementById("datetime").innerHTML = d.toDateString()
+			</script>
+		  </div>
+		</div>
+		<div ng-app="myApp" ng-controller="namesCtrl">			
+			<h3>Search for a item</h3>						
+			<label>Product Name </label>
+			<input class="input_type" type="text" name="productName" ng-model="test" name="productID" />
+			<label>Product Type </label>
+			<select name="productType" id="productType">
+			  <option value="all">All</option>
+			  <option value="dianmond">Dianmond</option>
+			  <option value="gold">Saab</option>
+			  <option value="ring">Ring</option>
+			  <option value="bracelet">Bracelet</option>
+			  <option value="necklet">Necklet</option>
+			  <option value="earing">Earing</option>
+			</select>
+			<input class="submit_btn" name="submit" type="submit" value="Search"/>
+			
+			<ul ng-repeat="x in names | filter : test">
+				<li> {{ x }} </li>
+		</ul>	
+				
+	</div >		
+		<script>
+			angular.module('myApp', []).controller('namesCtrl', function($scope) {
+				$scope.names = [
+					'Bolo tie | $200.00',					
+					'Carcanet | $230.00',	
+					'Choker | $180.00',
+					'Pendant | $290.00',
+					'Torc | $120.00',
+					'Bangle | $500.00',
+					'Gospel bracelet | $1,200.00',
+					'Toe Ring | $230.00',
+					'Ankle bracelets | $700.00',					
+					'Engagement ring | $25,500.00',
+					'Class ring | $1,800.00',
+					'Wedding ring | $23,200.00',
+					'Championship ring | $24,200.00'
+				];
+			});
+			</script>
+		
+	<div class ="bttn">		
+		<button class="submit_btn" onclick="openForm()">Insert</button>
+		<div class="form-popup" id="myForm">
+		  <form action="/action_page.php" class="form-container">
+			<h2>Insert an Item</h2>
+			<label for="productID">ProductID:</label><br>
+		  <input type="productID" id="productID" name="productID" value=""><br><br>
+		  <label for="productName">Product Name:</label><br>
+		  <input type="text" id="lname" name="productName" value=""><br>
+		  <label>Product Type </label> <br>
+			<select name="productType" id="productType">
+			  <option value="all">All</option>
+			  <option value="dianmond">Dianmond</option>
+			  <option value="gold">Saab</option>
+			  <option value="ring">Ring</option>
+			  <option value="bracelet">Bracelet</option>
+			  <option value="necklet">Necklet</option>
+			  <option value="earing">Earing</option>
+			</select><br><br>	
+		  <label for="productPrice">Product Price:</label><br>
+		  <input type="text" id="productPrice" name="productPrice" value=""><br>
+		  <label for="productDescription">Product Description:</label><br>
+		  <input type="text" id="productDescription" name="productDescription" value=""><br>
+			<button type="submit" class="btn">Insert</button>
+			<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+		  </form>
+		</div>
+
+		<script>
+		function openForm() {
+		  document.getElementById("myForm").style.display = "block";
+		}
+
+		function closeForm() {
+		  document.getElementById("myForm").style.display = "none";
+		}
+		</script>		
+		
+		<input class="submit_btn" name="submit" type="submit" value="Update"/>	
+		<input class="submit_btn" name="submit" type="submit" value="Delete"/>	
+	</div>
+	</body>
+	<footer><p id = "footer_content"> This web site is entirely original work and full academic copyright is retained. This web site complies
+				with the Mason Honor Code <a href="mailto:http://oai.gmu.edu/mason-honor-code">http://oai.gmu.edu/mason-honor-code</a></p>
+	</footer>
+</html>
